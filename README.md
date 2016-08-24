@@ -26,6 +26,7 @@ EventBus – used as a service handler to transfer objects quickly from the back
 
 
 Requirements Fullfilled:
+
 First Component
 •	Percentage of the bigger value – Done. Created CircleProgress Object that extends View to handle the filling of the percentage of the current value against total value 
 •	Ring filling color should be customized by parameter – Done. CircleProgress can handle the fill color change thru the attributes or by code
@@ -33,11 +34,13 @@ First Component
 •	The component should support a bottom image passed as a parameter – Done. Used ImageView
 •	Component should support multiple devices resolution – can be supported. Although small devices might have a some issues as the minimum height and width is 200 dp.
 •	Based in the json trend attribute (“down” or “up”) you will have a down or up arrow on the right side of the bigger number. - Done
+
 Second Component
 •	It should have 3 level of progression bars – Done. Used ItemList adapters to line up the ItemViews horizontally
 •	It should have a dotted line in the middle of the component – Done. Used dotted.xml to create a dotted middle line. 
 •	Based on the json response the progression indicator should be painted as green, yellow or red (good, ok and bad) – Done. Picked the color for each indicator from the given pdf form. 
 •	Draw the progress from the center to the calculated point.
+
 Other Notes:
 -	colors were copied to match the images on the pdf
 
