@@ -7,15 +7,17 @@ The Framework made for this challenge was initially made with the MVC framework 
 Creating Model Objects, Views, and Controllers to create the whole project. 
 
 Models :
-        Overall - handles the overall attributes for the first component
-        Item - handles each status and time_difference attributes for the second component
+
+                - Overall - handles the overall attributes for the first component
+                - Item - handles each status and time_difference attributes for the second component
 
 Views :
-        MainActivity – handles the activity for the first component. 
-        OverallView – custom view that supports Main Activity and transfer the data from overall object to the activity screen
-        SecondActivity – handles the activity for the second component
-        ItemView - custom view that supports Second Activity and transfer the data from item object to the activity screen
-        ItemViewSet – custom view that handles a list of ItemViews
+
+                - MainActivity – handles the activity for the first component. 
+                - OverallView – custom view that supports Main Activity and transfer the data from overall object to the activity screen
+                - SecondActivity – handles the activity for the second component
+                - ItemView - custom view that supports Second Activity and transfer the data from item object to the activity screen
+                - ItemViewSet – custom view that handles a list of ItemViews
 
 Controller :
 
