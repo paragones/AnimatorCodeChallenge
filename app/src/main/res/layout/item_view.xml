@@ -1,0 +1,84 @@
+<merge xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/activity_horizontal_margin"
+        >
+
+        <View
+            android:id="@+id/firstBar"
+            android:layout_width="63dp"
+            android:layout_height="3dp"
+            android:background="#af96ff"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+
+            />
+
+        <View
+            android:id="@+id/firstColumn"
+            android:layout_width="5dp"
+            android:layout_height="3dp"
+            android:background="#7b55fa"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/firstBar"
+            />
+
+        <View
+            android:id="@+id/secondBar"
+            android:layout_width="63dp"
+            android:layout_height="3dp"
+            android:background="#af96ff"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/firstColumn"
+            />
+
+
+
+        <View
+            android:id="@+id/thirdBar"
+            android:layout_width="63dp"
+            android:layout_height="3dp"
+            android:background="#af96ff"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/secondColumn"
+            />
+
+        <View
+            android:id="@+id/progressBar"
+            android:layout_width="75dp"
+            android:layout_height="3dp"
+            android:background="@android:color/white"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/midpoint"
+            />
+
+        <View
+            android:id="@+id/cursor"
+            android:layout_width="3dp"
+            android:layout_height="40dp"
+            android:background="#f75e68"
+            android:layout_toRightOf="@id/progressBar"
+            android:layout_centerVertical="true"
+            />
+
+        <View
+            android:id="@+id/secondColumn"
+            android:layout_width="5dp"
+            android:layout_height="3dp"
+            android:background="#7b55fa"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/secondBar"
+            />
+
+        <View
+            android:id="@+id/midpoint"
+            android:layout_width="1.5dp"
+            android:layout_height="60dp"
+            android:background="@drawable/dotted"
+            android:layout_centerInParent="true"
+            />
+
+    </RelativeLayout>
+
+</merge>
