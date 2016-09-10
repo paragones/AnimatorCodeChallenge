@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 
 import com.firebase.client.Firebase;
+import com.paularagones.dojocodechallenge.Application.DojoApplication;
 import com.paularagones.dojocodechallenge.Models.Overall;
 import com.paularagones.dojocodechallenge.R;
 import com.paularagones.dojocodechallenge.Services.FirebaseService;
@@ -13,12 +14,16 @@ import com.paularagones.dojocodechallenge.Views.OverallView;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 
-public class MainActivity extends AppCompatActivity {
+import javax.inject.Inject;
 
-    private static final String LOG_TAG = MainActivity.class.getSimpleName();
-    private EventBus eventBus;
-    private OverallView overallView;
-    private AppCompatActivity activity;
+import butterknife.Bind;
+import butterknife.ButterKnife;
+
+public class MainActivity extends AppCompatActivity {
+    @Inject EventBus eventBus;
+    @Inject FirebaseService firebaseService;
+
+    @Bind(R.id.overall_view) OverallView overallView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,11 +34,10 @@ public class MainActivity extends AppCompatActivity {
     private void initialize() {
 
         // Initialize Services and Methods
-        eventBus = EventBus.getDefault();
+        ((DojoApplication) getApplication()).getServiceComponent().inject(this);
+
         eventBus.register(this);
-        activity = this;
         Firebase.setAndroidContext(this);
-        FirebaseService firebaseService = FirebaseService.newInstance();
         firebaseService.callOverall();
         firebaseService.callItems();
 
@@ -44,11 +48,11 @@ public class MainActivity extends AppCompatActivity {
     public void onOverallCalled(Overall overall) {
         setContentView(R.layout.activity_main);
 
-        overallView = (OverallView) findViewById(R.id.overall_view);
+        ButterKnife.bind(this);
         overallView.setCurrentScore(String.valueOf(overall.getValue()));
         overallView.setTotalScore(String.valueOf(overall.getTotal()));
         overallView.setTrend(overall.getTrend());
-        overallView.setActivity(activity);
+        overallView.setActivity(this);
         overallView.setProgress(overall.getValue(), overall.getTotal());
 
     }

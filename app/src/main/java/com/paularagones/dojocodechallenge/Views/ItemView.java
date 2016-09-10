@@ -13,15 +13,19 @@ import android.widget.TextView;
 import com.paularagones.dojocodechallenge.Constants.SystemConstants;
 import com.paularagones.dojocodechallenge.R;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
+
 /**
  * Created by Mack and Aragones on 23/08/2016.
  */
 public class ItemView extends RelativeLayout {
 
     private static final String LOG_TAG = ItemView.class.getSimpleName();
-    private View progressBar;
-    private View cursor;
-    private View midpoint;
+
+    @Bind(R.id.progressBar) View progressBar;
+    @Bind(R.id.cursor) View cursor;
+
     private RelativeLayout.LayoutParams progressBarRule;
     private RelativeLayout.LayoutParams cursorRule;
 
@@ -45,18 +49,12 @@ public class ItemView extends RelativeLayout {
         LayoutInflater inflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         inflater.inflate(R.layout.item_view, this);
-
-
+        ButterKnife.bind(this);
     }
 
     protected void onFinishInflate() {
         super.onFinishInflate();
         Log.d(LOG_TAG, "onFinishInflate");
-
-        progressBar = (View) findViewById(R.id.progressBar);
-        cursor = (View) findViewById(R.id.cursor);
-        midpoint = (View) findViewById(R.id.midpoint);
-
         progressBarRule = (RelativeLayout.LayoutParams) progressBar.getLayoutParams();
         cursorRule = (RelativeLayout.LayoutParams) cursor.getLayoutParams();
 

@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.widget.ListView;
 
 import com.paularagones.dojocodechallenge.Adapters.ItemAdapters;
+import com.paularagones.dojocodechallenge.Application.DojoApplication;
 import com.paularagones.dojocodechallenge.Models.ItemSet;
 import com.paularagones.dojocodechallenge.R;
 
@@ -13,10 +14,15 @@ import org.greenrobot.eventbus.Subscribe;
 
 import java.util.List;
 
-public class SecondActivity extends AppCompatActivity {
-    private static final String LOG_TAG = SecondActivity.class.getSimpleName();
-    private EventBus eventBus;
+import javax.inject.Inject;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
+
+public class SecondActivity extends AppCompatActivity {
+    @Inject EventBus eventBus;
+
+    @Bind(R.id.item_list) ListView listView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +31,7 @@ public class SecondActivity extends AppCompatActivity {
     }
 
     private void initialize() {
-        eventBus = EventBus.getDefault();
+        ((DojoApplication) getApplication()).getServiceComponent().inject(this);
         eventBus.register(this);
     }
 
@@ -33,7 +39,7 @@ public class SecondActivity extends AppCompatActivity {
     public void onItemSetCalled(List<ItemSet> itemSets) {
         setContentView(R.layout.activity_second);
         ItemAdapters itemAdapters = new ItemAdapters(this, R.layout.item_set_view, itemSets);
-        ListView listView = (ListView) findViewById(R.id.item_list);
+        ButterKnife.bind(this);
         listView.setAdapter(itemAdapters);
     }
 

@@ -15,17 +15,22 @@ import com.paularagones.dojocodechallenge.Constants.SystemConstants;
 import com.paularagones.dojocodechallenge.Drawable.CircleProgress;
 import com.paularagones.dojocodechallenge.R;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+
 /**
  * Created by Mack and Aragones on 23/08/2016.
  */
 public class OverallView extends RelativeLayout {
 
     private static final String LOG_TAG = OverallView.class.getSimpleName();
-    private CircleProgress fillCircle;
-    private TextView currentScore;
-    private TextView totalScore;
-    private TextView arrow;
     private AppCompatActivity activity;
+
+    @Bind(R.id.fillCircle) CircleProgress fillCircle;
+    @Bind(R.id.currentScore) TextView currentScore;
+    @Bind(R.id.totalScore) TextView totalScore;
+    @Bind(R.id.arrow) TextView arrow;
 
     public OverallView(Context context) {
         super(context);
@@ -42,50 +47,21 @@ public class OverallView extends RelativeLayout {
         initializeViews(context);
     }
 
-    /**
-     * Inflates the views in the layout.
-     * * @param context
-     * the current context for the view.
-     */
     private void initializeViews(Context context) {
         Log.d(LOG_TAG, "initializeViews");
         LayoutInflater inflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         inflater.inflate(R.layout.overall_view, this);
-
-
+        ButterKnife.bind(this);
     }
 
-    @
-
-            Override
-    protected void onFinishInflate() {
-        super.onFinishInflate();
-        Log.d(LOG_TAG, "onFinishInflate");
-        // Sets the images for the previous and next buttons. Uses
-        // built‐in images so you don't need to add images, but in
-        // a real application your images should be in the
-        // application package so they are always available.
-
-        fillCircle = (CircleProgress) findViewById(R.id.fillCircle);
-        currentScore = (TextView) findViewById(R.id.currentScore);
-        totalScore = (TextView) findViewById(R.id.totalScore);
-        arrow = (TextView) findViewById(R.id.arrow);
-
-
-    }
 
     public void setCurrentScore(String currentScoreValue) {
         Log.d(LOG_TAG, "setCurrentScore");
         currentScore.setText(currentScoreValue);
-
-        currentScore.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                enterSecondActivity();
-            }
-        });
     }
+
+
 
     public void setTotalScore(String totalScoreValue) {
         Log.d(LOG_TAG, "setTotalScore");
@@ -102,7 +78,8 @@ public class OverallView extends RelativeLayout {
         }
     }
 
-    private void enterSecondActivity() {
+    @OnClick(R.id.currentScore)
+    public void enterSecondActivity() {
         Intent mainIntent = new Intent(activity, SecondActivity.class);
         activity.startActivity(mainIntent);
         activity.finish();
@@ -120,4 +97,6 @@ public class OverallView extends RelativeLayout {
 
         fillCircle.setProgress(Math.round(progress));
     }
+
+
 }
