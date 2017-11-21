@@ -1,5 +1,5 @@
-# DojoCodeChallenge
-An Android Source Code for the Dojo Madness Code Challenge
+# AnimatorCodeChallenge
+An Android Source Code for an Animator Code Challenge
 
 -- Code Design and Architectural Solution
 
