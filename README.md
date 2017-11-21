@@ -1,5 +1,5 @@
-# AnimatorCodeChallenge
-An Android Source Code for an Animator Code Challenge
+# EsportCodeChallenge
+An Android Source Code for an Esport Progress Animmator View Code Challenge
 
 -- Code Design and Architectural Solution
 
